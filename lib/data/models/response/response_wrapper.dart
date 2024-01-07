@@ -11,7 +11,7 @@ class ResponseWrapper<T> with _$ResponseWrapper<T>{
     final String? status,
     final int? totalResults,
     final String? nextPage,
-    final T? content,
+    final T? results,
   }) = _ResponseWrapper;
 
   factory ResponseWrapper.fromJson(Map<String, dynamic> json,

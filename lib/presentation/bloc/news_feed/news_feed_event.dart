@@ -1,5 +1,6 @@
-import 'package:equatable/equatable.dart';
+part of 'news_feed_bloc.dart';
 
+@immutable
 abstract class NewsFeedEvent extends Equatable {
   const NewsFeedEvent();
 
@@ -14,11 +15,9 @@ class OnLoad extends NewsFeedEvent {
   List<Object?> get props => [];
 }
 
-class OnChangeLayout extends NewsFeedEvent {
-  final bool isList;
-
-  const OnChangeLayout({required this.isList});
+class OnLoadMore extends NewsFeedEvent {
+  const OnLoadMore();
 
   @override
-  List<Object?> get props => [isList];
+  List<Object?> get props => [];
 }

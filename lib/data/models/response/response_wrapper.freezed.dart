@@ -24,7 +24,7 @@ mixin _$ResponseWrapper<T> {
   String? get status => throw _privateConstructorUsedError;
   int? get totalResults => throw _privateConstructorUsedError;
   String? get nextPage => throw _privateConstructorUsedError;
-  T? get content => throw _privateConstructorUsedError;
+  T? get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $ResponseWrapperCopyWith<T, $Res> {
           ResponseWrapper<T> value, $Res Function(ResponseWrapper<T>) then) =
       _$ResponseWrapperCopyWithImpl<T, $Res, ResponseWrapper<T>>;
   @useResult
-  $Res call({String? status, int? totalResults, String? nextPage, T? content});
+  $Res call({String? status, int? totalResults, String? nextPage, T? results});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$ResponseWrapperCopyWithImpl<T, $Res, $Val extends ResponseWrapper<T>>
     Object? status = freezed,
     Object? totalResults = freezed,
     Object? nextPage = freezed,
-    Object? content = freezed,
+    Object? results = freezed,
   }) {
     return _then(_value.copyWith(
       status: freezed == status
@@ -73,9 +73,9 @@ class _$ResponseWrapperCopyWithImpl<T, $Res, $Val extends ResponseWrapper<T>>
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
               as String?,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
+      results: freezed == results
+          ? _value.results
+          : results // ignore: cast_nullable_to_non_nullable
               as T?,
     ) as $Val);
   }
@@ -89,7 +89,7 @@ abstract class _$$ResponseWrapperImplCopyWith<T, $Res>
       __$$ResponseWrapperImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({String? status, int? totalResults, String? nextPage, T? content});
+  $Res call({String? status, int? totalResults, String? nextPage, T? results});
 }
 
 /// @nodoc
@@ -106,7 +106,7 @@ class __$$ResponseWrapperImplCopyWithImpl<T, $Res>
     Object? status = freezed,
     Object? totalResults = freezed,
     Object? nextPage = freezed,
-    Object? content = freezed,
+    Object? results = freezed,
   }) {
     return _then(_$ResponseWrapperImpl<T>(
       status: freezed == status
@@ -121,9 +121,9 @@ class __$$ResponseWrapperImplCopyWithImpl<T, $Res>
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
               as String?,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
+      results: freezed == results
+          ? _value.results
+          : results // ignore: cast_nullable_to_non_nullable
               as T?,
     ));
   }
@@ -135,7 +135,7 @@ class _$ResponseWrapperImpl<T>
     with DiagnosticableTreeMixin
     implements _ResponseWrapper<T> {
   const _$ResponseWrapperImpl(
-      {this.status, this.totalResults, this.nextPage, this.content});
+      {this.status, this.totalResults, this.nextPage, this.results});
 
   factory _$ResponseWrapperImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
@@ -148,11 +148,11 @@ class _$ResponseWrapperImpl<T>
   @override
   final String? nextPage;
   @override
-  final T? content;
+  final T? results;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResponseWrapper<$T>(status: $status, totalResults: $totalResults, nextPage: $nextPage, content: $content)';
+    return 'ResponseWrapper<$T>(status: $status, totalResults: $totalResults, nextPage: $nextPage, results: $results)';
   }
 
   @override
@@ -163,7 +163,7 @@ class _$ResponseWrapperImpl<T>
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('totalResults', totalResults))
       ..add(DiagnosticsProperty('nextPage', nextPage))
-      ..add(DiagnosticsProperty('content', content));
+      ..add(DiagnosticsProperty('results', results));
   }
 
   @override
@@ -176,13 +176,13 @@ class _$ResponseWrapperImpl<T>
                 other.totalResults == totalResults) &&
             (identical(other.nextPage, nextPage) ||
                 other.nextPage == nextPage) &&
-            const DeepCollectionEquality().equals(other.content, content));
+            const DeepCollectionEquality().equals(other.results, results));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, status, totalResults, nextPage,
-      const DeepCollectionEquality().hash(content));
+      const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
@@ -202,7 +202,7 @@ abstract class _ResponseWrapper<T> implements ResponseWrapper<T> {
       {final String? status,
       final int? totalResults,
       final String? nextPage,
-      final T? content}) = _$ResponseWrapperImpl<T>;
+      final T? results}) = _$ResponseWrapperImpl<T>;
 
   factory _ResponseWrapper.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
@@ -215,7 +215,7 @@ abstract class _ResponseWrapper<T> implements ResponseWrapper<T> {
   @override
   String? get nextPage;
   @override
-  T? get content;
+  T? get results;
   @override
   @JsonKey(ignore: true)
   _$$ResponseWrapperImplCopyWith<T, _$ResponseWrapperImpl<T>> get copyWith =>

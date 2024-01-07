@@ -1,14 +1,16 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsfeed_test/data/models/news_article/news_article.dart';
 import 'package:newsfeed_test/domain/usecases/news_feed_usecase.dart';
-import 'package:newsfeed_test/presentation/bloc/news_feed_event.dart';
-import 'package:newsfeed_test/presentation/bloc/news_feed_state.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:equatable/equatable.dart';
+
+part 'news_feed_event.dart';
+part 'news_feed_state.dart';
 
 class NewsFeedBloc extends Bloc<NewsFeedEvent, NewsFeedState> {
   final NewsFeedUseCase _newsFeedUseCase;
-
-  List<NewsArticle> _articles = [];
 
   NewsFeedBloc(this._newsFeedUseCase) : super(NewsFeedEmpty()) {
     on<OnLoad>(
@@ -21,23 +23,30 @@ class NewsFeedBloc extends Bloc<NewsFeedEvent, NewsFeedState> {
             emit(NewsFeedError(failure.message));
           },
           (data) {
-            _articles = data;
-            emit(NewsFeedHasDataAsList(data));
+            emit(NewsFeedHasData(data.results!, data.nextPage!, false));
           },
         );
       },
       transformer: debounce(const Duration(milliseconds: 500)),
     );
-    on<OnChangeLayout>(
+    on<OnLoadMore>(
       (event, emit) async {
-        final isList = event.isList;
+        emit(NewsFeedHasData(state.result, state.nextPage, true));
 
-        if (isList) {
-          emit(NewsFeedHasDataAsList(_articles));
-        } else {
-          emit(NewsFeedHasDataAsGrid(_articles));
-        }
+        final result = await _newsFeedUseCase.executeGetNewsArticles(
+          page: state.nextPage,
+        );
+        result.fold(
+          (failure) {
+            emit(NewsFeedError(failure.message));
+          },
+          (data) {
+            emit(NewsFeedHasData(
+                [...state.result, ...data.results!], data.nextPage!, false));
+          },
+        );
       },
+      transformer: debounce(const Duration(milliseconds: 500)),
     );
   }
 

@@ -14,7 +14,7 @@ _$ResponseWrapperImpl<T> _$$ResponseWrapperImplFromJson<T>(
       status: json['status'] as String?,
       totalResults: json['totalResults'] as int?,
       nextPage: json['nextPage'] as String?,
-      content: _$nullableGenericFromJson(json['content'], fromJsonT),
+      results: _$nullableGenericFromJson(json['results'], fromJsonT),
     );
 
 Map<String, dynamic> _$$ResponseWrapperImplToJson<T>(
@@ -25,7 +25,7 @@ Map<String, dynamic> _$$ResponseWrapperImplToJson<T>(
       'status': instance.status,
       'totalResults': instance.totalResults,
       'nextPage': instance.nextPage,
-      'content': _$nullableGenericToJson(instance.content, toJsonT),
+      'results': _$nullableGenericToJson(instance.results, toJsonT),
     };
 
 T? _$nullableGenericFromJson<T>(

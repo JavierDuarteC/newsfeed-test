@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:newsfeed_test/data/datasources/service.dart';
 import 'package:newsfeed_test/data/failure.dart';
 import 'package:newsfeed_test/data/models/news_article/news_article.dart';
+import 'package:newsfeed_test/data/models/response/response_wrapper.dart';
 import 'package:newsfeed_test/domain/repositories/news_feed_repository_interface.dart';
 
 class NewsFeedRepository implements NewsFeedRepositoryInterface {
@@ -13,7 +14,7 @@ class NewsFeedRepository implements NewsFeedRepositoryInterface {
   NewsFeedRepository({required this.restClient});
 
   @override
-  Future<Either<Failure, List<NewsArticle>>> getNewsArticles({
+  Future<Either<Failure, ResponseWrapper<List<NewsArticle>?>>> getNewsArticles({
     String? page,
     String? country,
     String? language,
@@ -24,8 +25,8 @@ class NewsFeedRepository implements NewsFeedRepositoryInterface {
         language,
         page,
       );
-      final list = result.content ?? [];
-      return Right(list);
+
+      return Right(result);
     } on SocketException {
       return const Left(ConnectionFailure("Failed to connect to network"));
     } on DioException {
