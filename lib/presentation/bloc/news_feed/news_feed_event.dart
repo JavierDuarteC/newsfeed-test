@@ -9,7 +9,8 @@ abstract class NewsFeedEvent extends Equatable {
 }
 
 class OnLoad extends NewsFeedEvent {
-  const OnLoad();
+  final String category;
+  const OnLoad({required this.category});
 
   @override
   List<Object?> get props => [];

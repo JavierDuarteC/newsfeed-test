@@ -14,5 +14,6 @@ abstract class RestClient {
     @Query('country') String? country,
     @Query('language') String? language,
     @Query('page') String? page,
+    @Query('category') String? category,
   );
 }

@@ -14,11 +14,13 @@ class NewsFeedUseCase {
     String? page,
     String country = Constants.country,
     String language = Constants.language,
+    String? category,
   }) {
     return repository.getNewsArticles(
       page: page,
       country: country,
       language: language,
+      category: category,
     );
   }
 }

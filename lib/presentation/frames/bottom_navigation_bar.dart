@@ -14,21 +14,31 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
   ),
   BottomNavigationBarItem(
     icon: Icon(Icons.sports_esports),
-    label: 'Gaming',
+    label: 'E-Sports',
   ),
   BottomNavigationBarItem(
-    icon: Icon(Icons.settings),
-    label: 'Settings',
+    icon: Icon(Icons.science),
+    label: 'Science',
   ),
 ];
 
 const List<Widget> bottomNavScreen = <Widget>[
   NewsFeedPage(
     pageTitle: 'Top News',
+    category: 'top',
   ),
-  Text('Index 1: Sports'),
-  Text('Index 2: Gaming'),
-  Text('Index 3: Settings'),
+  NewsFeedPage(
+    pageTitle: 'Sports',
+    category: 'sports',
+  ),
+  NewsFeedPage(
+    pageTitle: 'E-Sports',
+    category: 'esports',
+  ),
+  NewsFeedPage(
+    pageTitle: 'Science',
+    category: 'science',
+  ),
 ];
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -42,7 +52,11 @@ class CustomBottomNavigationBar extends StatelessWidget {
       builder: (context, state) {
         if (state is NavigationBarSelected) {
           return Scaffold(
-            body: SafeArea(child: Center(child: bottomNavScreen.elementAt(state.tabIndex))),
+            body: SafeArea(
+              child: Center(
+                child: bottomNavScreen.elementAt(state.tabIndex),
+              ),
+            ),
             bottomNavigationBar: BottomNavigationBar(
               items: bottomNavItems,
               currentIndex: state.tabIndex,

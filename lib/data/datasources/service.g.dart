@@ -25,12 +25,14 @@ class _RestClient implements RestClient {
     String? country,
     String? language,
     String? page,
+    String? category,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'country': country,
       r'language': language,
       r'page': page,
+      r'category': category,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};

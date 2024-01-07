@@ -18,12 +18,14 @@ class NewsFeedRepository implements NewsFeedRepositoryInterface {
     String? page,
     String? country,
     String? language,
+    String? category,
   }) async {
     try {
       final result = await restClient.getNewsArticles(
         country,
         language,
         page,
+        category,
       );
 
       return Right(result);

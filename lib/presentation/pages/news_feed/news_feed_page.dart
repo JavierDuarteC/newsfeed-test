@@ -6,14 +6,16 @@ import 'package:newsfeed_test/presentation/pages/news_feed/components/news_artic
 import 'package:newsfeed_test/presentation/pages/news_feed/components/news_feed_title.dart';
 
 class NewsFeedPage extends StatelessWidget {
-  static const routeName = '/news_feed';
   final String pageTitle;
+  final String category;
 
-  const NewsFeedPage({Key? key, required this.pageTitle}) : super(key: key);
+  const NewsFeedPage(
+      {Key? key, required this.pageTitle, required this.category})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    context.read<NewsFeedBloc>().add(const OnLoad());
+    context.read<NewsFeedBloc>().add(OnLoad(category: category));
     return BlocBuilder<NewsFeedBloc, NewsFeedState>(
       builder: (context, state) {
         if (state is NewsFeedError) {

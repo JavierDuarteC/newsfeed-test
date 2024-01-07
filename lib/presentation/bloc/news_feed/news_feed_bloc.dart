@@ -16,7 +16,9 @@ class NewsFeedBloc extends Bloc<NewsFeedEvent, NewsFeedState> {
       (event, emit) async {
         emit(NewsFeedLoading());
 
-        final result = await _newsFeedUseCase.executeGetNewsArticles();
+        final result = await _newsFeedUseCase.executeGetNewsArticles(
+          category: event.category,
+        );
         result.fold(
           (failure) {
             emit(NewsFeedError(failure.message));
