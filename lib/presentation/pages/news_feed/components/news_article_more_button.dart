@@ -11,13 +11,14 @@ class NewsArticleMoreButton extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            const RoundedRectangleBorder(
-              borderRadius: BorderRadius.zero,
-            ),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          const RoundedRectangleBorder(
+            borderRadius: BorderRadius.zero,
           ),
-          backgroundColor:
-              MaterialStateProperty.all(Theme.of(context).colorScheme.primary)),
+        ),
+        backgroundColor:
+            MaterialStateProperty.all(Theme.of(context).colorScheme.primary),
+      ),
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8),
         child: SizedBox(

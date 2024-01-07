@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:newsfeed_test/custom_routes.dart';
 import 'package:newsfeed_test/presentation/bloc/navigation_bar/navigation_bar_bloc.dart';
 import 'package:newsfeed_test/presentation/bloc/news_feed/news_feed_bloc.dart';
-import 'package:newsfeed_test/presentation/frames/bottom_navigation_bar.dart';
 import 'injection.dart' as di;
 
 Future<void> main() async {
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'NewsFeed App',
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -49,7 +49,8 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
           useMaterial3: true,
         ),
-        home: const CustomBottomNavigationBar(),
+        initialRoute: CustomRoutes.getInitialRoute(),
+        routes: CustomRoutes.getRoutes(),
       ),
     );
   }

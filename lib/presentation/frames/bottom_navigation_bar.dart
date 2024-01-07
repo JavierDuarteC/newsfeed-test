@@ -23,13 +23,17 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
 ];
 
 const List<Widget> bottomNavScreen = <Widget>[
-  NewsFeedPage(),
+  NewsFeedPage(
+    pageTitle: 'Top News',
+  ),
   Text('Index 1: Sports'),
   Text('Index 2: Gaming'),
   Text('Index 3: Settings'),
 ];
 
 class CustomBottomNavigationBar extends StatelessWidget {
+  static const routeName = '/';
+
   const CustomBottomNavigationBar({super.key});
 
   @override
@@ -38,16 +42,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       builder: (context, state) {
         if (state is NavigationBarSelected) {
           return Scaffold(
-            appBar: AppBar(
-              title: Center(
-                child: Text('NEWS',
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                    )),
-              ),
-              backgroundColor: Theme.of(context).colorScheme.background,
-            ),
-            body: Center(child: bottomNavScreen.elementAt(state.tabIndex)),
+            body: SafeArea(child: Center(child: bottomNavScreen.elementAt(state.tabIndex))),
             bottomNavigationBar: BottomNavigationBar(
               items: bottomNavItems,
               currentIndex: state.tabIndex,
