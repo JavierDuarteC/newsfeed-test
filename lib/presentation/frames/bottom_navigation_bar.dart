@@ -24,18 +24,22 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
 
 const List<Widget> bottomNavScreen = <Widget>[
   NewsFeedPage(
+    key: Key('nf-page-top-news'),
     pageTitle: 'Top News',
     category: 'top',
   ),
   NewsFeedPage(
+    key: Key('nf-page-sports'),
     pageTitle: 'Sports',
     category: 'sports',
   ),
   NewsFeedPage(
+    key: Key('nf-page-e-sports'),
     pageTitle: 'E-Sports',
     category: 'esports',
   ),
   NewsFeedPage(
+    key: Key('nf-page-science'),
     pageTitle: 'Science',
     category: 'science',
   ),
@@ -58,6 +62,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               ),
             ),
             bottomNavigationBar: BottomNavigationBar(
+              key: const Key('nav-bar'),
               items: bottomNavItems,
               currentIndex: state.tabIndex,
               selectedItemColor: Theme.of(context).colorScheme.primary,

@@ -33,7 +33,13 @@ class NewsArticleDetail extends StatelessWidget {
                   if (await canLaunchUrl(url)) {
                     await launchUrl(url);
                   } else {
-                    print('cant launch url');
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Could not open source!'),
+                        ),
+                      );
+                    }
                   }
                 },
                 child: const Center(

@@ -16,7 +16,7 @@ class MockService implements RestClient {
             "title":
                 "GM Steve Staios looking for veteran help to assist the Senators' young core",
             "link":
-                "https://ottawasun.com/sports/hockey/nhl/ottawa-senators/gm-steve-staios-looking-for-veteran-help-to-assist-the-senators-young-core",
+                "h://ottawasun.com/sports/hockey/nhl/ottawa-senators/gm-steve-staios-looking-for-veteran-help-to-assist-the-senators-young-core",
             "keywords": ["hockey", "ottawa senators"],
             "creator": ["Bruce Garrioch"],
             "video_url": null,

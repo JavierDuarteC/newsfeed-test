@@ -26,7 +26,7 @@ class NewsFeedPage extends StatelessWidget {
 
         if (state is NewsFeedLoading) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(key: Key('nf-page-loading')),
           );
         }
 
